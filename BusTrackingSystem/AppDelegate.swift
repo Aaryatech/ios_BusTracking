@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import GooglePlaces
+import GoogleMaps
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -16,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //AIzaSyBF3U5JP1BTpHixSMEhQMKgh4nN8TatFro
+        GMSPlacesClient.provideAPIKey("AIzaSyBF3U5JP1BTpHixSMEhQMKgh4nN8TatFro")
+        GMSServices.provideAPIKey("AIzaSyBF3U5JP1BTpHixSMEhQMKgh4nN8TatFro")
+        checkDataBase();
         return true
     }
 
@@ -40,7 +45,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func checkDataBase(){
+        
+        let bundlePath = Bundle.main.path(forResource: "gtfs", ofType: ".db")
+        let destPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        let fileManager = FileManager.default
+        let fullDestPath = URL(fileURLWithPath: destPath).appendingPathComponent("gtfs.db")
+        if fileManager.fileExists(atPath: fullDestPath.path){
+            print("Database file is exist")
+            print(fileManager.fileExists(atPath: bundlePath!))
+        }else{
+            do{
+                try fileManager.copyItem(atPath: (bundlePath)!, toPath: fullDestPath.path)
+            }catch{
+                print("\n",error)
+            }
+        }
+        
 
 
 }
-
+}
