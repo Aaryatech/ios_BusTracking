@@ -11,6 +11,7 @@ import UIKit
 class BusTableViewCell: UITableViewCell {
  @IBOutlet weak var lblBusNmber: UILabel!
      @IBOutlet weak var lblBusName: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,3 +24,4 @@ class BusTableViewCell: UITableViewCell {
     }
 
 }
+

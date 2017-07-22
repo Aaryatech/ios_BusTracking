@@ -165,7 +165,7 @@ var arrBus:Array=[ClsBusData]();
         
         
         let backItem = UIBarButtonItem()
-        backItem.title = "Back"
+        backItem.title = " "
         navigationItem.backBarButtonItem = backItem
         let vc = self.storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as! DetailViewController
         vc.objBus = arrBus[indexPath.row]

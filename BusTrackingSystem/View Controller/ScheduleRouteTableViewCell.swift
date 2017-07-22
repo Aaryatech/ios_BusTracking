@@ -13,6 +13,9 @@ class ScheduleRouteTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblStationName: UILabel!
     
+    @IBOutlet weak var imgCircle: UIImageView!
+    @IBOutlet weak var viwline: UIView!
+    @IBOutlet weak var viwlineBackground: UIView!
     @IBOutlet weak var btnAlarm: UIButton!
     @IBOutlet weak var btnViewSchedule: UIButton!
     override func awakeFromNib() {
